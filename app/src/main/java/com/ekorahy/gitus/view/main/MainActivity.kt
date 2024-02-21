@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ekorahy.gitus.R
 import com.ekorahy.gitus.adapter.UserAdapter
 import com.ekorahy.gitus.data.remote.response.GithubResponse
 import com.ekorahy.gitus.data.remote.response.ItemsItem
@@ -25,12 +26,28 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.rvUsers.layoutManager = layoutManager
 
-        findUsers()
+        findUsers(Q)
+
+        with(binding) {
+            svUser.setupWithSearchBar(sbUser)
+            svUser
+                .editText
+                .setOnEditorActionListener { _, _, _ ->
+                    if (svUser.text.toString().isEmpty()) {
+                        svUser.editText.error = getString(R.string.empty_input_warning)
+                    } else {
+                        sbUser.setText(svUser.text)
+                        svUser.hide()
+                        findUsers(svUser.text.toString())
+                    }
+                    true
+                }
+        }
     }
 
-    private fun findUsers() {
+    private fun findUsers(q: String) {
         showLoading(true)
-        val client = ApiConfig.getApiService().getUserByQuery(Q)
+        val client = ApiConfig.getApiService().getUserByQuery(q)
         client.enqueue(object: Callback<GithubResponse> {
             override fun onResponse(
                 call: Call<GithubResponse>,

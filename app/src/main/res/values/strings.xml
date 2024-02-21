@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GitUs</string>
+    <string name="placeholder_username">Username</string>
+    <string name="placeholder_type">Type</string>
 </resources>

@@ -15,7 +15,7 @@ android {
         versionName = "1.0"
         buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
         buildConfigField("String", "GITHUB_TOKEN",
-            "\"{GITHUB_TOKEN}\""
+            "\"token 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\""
         )
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -54,9 +54,13 @@ dependencies {
 
     // glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("jp.wasabeef:glide-transformations:4.3.0")
 
     // retrofit & logging interceptor
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    // viewpager
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 }

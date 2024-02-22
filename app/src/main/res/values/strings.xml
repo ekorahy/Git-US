@@ -2,5 +2,17 @@
     <string name="app_name">GitUs</string>
     <string name="placeholder_username">Username</string>
     <string name="placeholder_type">Type</string>
+    <string name="placeholder_full_name">Full Name</string>
     <string name="empty_input_warning">The input field cannot be empty.</string>
+    <string name="label_detail_user">Detail User</string>
+    <string name="default_value_number">0</string>
+    <string name="default_value_string">-</string>
+    <string name="label_followers">Followers</string>
+    <string name="label_following">Following</string>
+    <string name="label_repos">Repos</string>
+    <string name="label_bio">Bio</string>
+    <string name="username">\@%s</string>
+    <string name="placeholder_bio">Just keep swimming.</string>
+
+    <string name="content_tab_text">This is Tab %1$d</string>
 </resources>

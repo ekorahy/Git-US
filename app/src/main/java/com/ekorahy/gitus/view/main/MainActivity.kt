@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     private fun findUsers(q: String) {
         showLoading(true)
         val client = ApiConfig.getApiService().getUserByQuery(q)
-        client.enqueue(object: Callback<GithubResponse> {
+        client.enqueue(object : Callback<GithubResponse> {
             override fun onResponse(
                 call: Call<GithubResponse>,
                 response: Response<GithubResponse>
@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
                 showLoading(false)
                 Log.e(TAG, "onFailure: ${t.message}")
             }
-
         })
     }
 

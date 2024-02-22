@@ -15,6 +15,9 @@
         android:theme="@style/Theme.GitUs"
         tools:targetApi="31">
         <activity
+            android:name=".view.detailuser.DetailUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.main.MainActivity"
             android:exported="true">
             <intent-filter>

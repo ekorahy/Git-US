@@ -39,7 +39,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/circle_button_style"
-                    android:src="@drawable/ic_arrow_back_2"
+                    android:src="@drawable/ic_arrow_back"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView

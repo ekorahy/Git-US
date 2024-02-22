@@ -42,6 +42,7 @@ class FollowFragment : Fragment() {
     }
 
     private fun getFollow(username: String, isFollowers: Boolean) {
+        showLoading(true)
         val client = if (isFollowers) ApiConfig.getApiService()
             .getFollowers(username) else ApiConfig.getApiService().getFollowing(username)
         client.enqueue(object : Callback<List<ItemsItem>> {
@@ -49,6 +50,7 @@ class FollowFragment : Fragment() {
                 call: Call<List<ItemsItem>>,
                 response: Response<List<ItemsItem>>
             ) {
+                showLoading(false)
                 if (response.isSuccessful) {
                     response.body()?.let { setUserData(it) }
                 } else {
@@ -57,6 +59,7 @@ class FollowFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<List<ItemsItem>>, t: Throwable) {
+                showLoading(false)
                 Log.d(TAG, "onFailure: ${t.message}")
             }
 
@@ -67,6 +70,14 @@ class FollowFragment : Fragment() {
         val adapter = UserAdapter()
         adapter.submitList(user)
         binding.rvUsers.adapter = adapter
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.lpiLoading.visibility = View.VISIBLE
+        } else {
+            binding.lpiLoading.visibility = View.GONE
+        }
     }
 
     companion object {

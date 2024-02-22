@@ -3,6 +3,7 @@ package com.ekorahy.gitus.view.detailuser
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
@@ -41,12 +42,14 @@ class DetailUserActivity : AppCompatActivity() {
     }
 
     private fun detailUser(username: String?) {
+        showLoading(true)
         val client = username?.let { ApiConfig.getApiService().getDetailUser(it) }
         client?.enqueue(object : Callback<DetailUserResponse> {
             override fun onResponse(
                 call: Call<DetailUserResponse>,
                 response: Response<DetailUserResponse>
             ) {
+                showLoading(false)
                 if (response.isSuccessful) {
                     response.body()?.let { setUserData(it) }
                 } else {
@@ -55,6 +58,7 @@ class DetailUserActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
+                showLoading(false)
                 Log.d(TAG, "onFailure: ${t.message}")
             }
 
@@ -83,6 +87,14 @@ class DetailUserActivity : AppCompatActivity() {
             tvFollowers.text = user.followers.toString()
             tvRepos.text = user.publicRepos.toString()
             tvFollowing.text = user.following.toString()
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.lpiLoading.visibility = View.VISIBLE
+        } else {
+            binding.lpiLoading.visibility = View.GONE
         }
     }
 

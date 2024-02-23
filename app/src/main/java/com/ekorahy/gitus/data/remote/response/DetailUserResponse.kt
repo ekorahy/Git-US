@@ -25,4 +25,7 @@ data class DetailUserResponse(
 
     @field:SerializedName("name")
     val name: String,
+
+    @field:SerializedName("type")
+    val type: String,
 )

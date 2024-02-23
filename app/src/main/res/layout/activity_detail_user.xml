@@ -9,8 +9,8 @@
         android:id="@+id/lpi_loading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:elevation="2dp"
+        android:indeterminate="true"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +25,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="-170dp"
+        android:background="@color/md_theme_primary"
+        android:elevation="3dp"
+        android:fontFamily="@font/google_sans_bold"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="4dp"
+        android:textAlignment="center"
+        android:textColor="@color/md_theme_onPrimary"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/placeholder_type" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -98,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/google_sans_bold"
                 android:textSize="24sp"
                 tools:text="@string/placeholder_full_name" />
@@ -116,9 +136,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:paddingVertical="14dp"
                 android:gravity="center|bottom"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingVertical="14dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -221,7 +241,7 @@
                 android:id="@+id/vp_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="16dp"/>
+                android:paddingHorizontal="16dp" />
         </LinearLayout>
 
     </ScrollView>

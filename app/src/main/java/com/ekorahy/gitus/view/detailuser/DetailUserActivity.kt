@@ -74,6 +74,7 @@ class DetailUserActivity : AppCompatActivity() {
             } else {
                 tvFullName.text = getString(R.string.default_value_string)
             }
+            tvType.text = user.type
             tvUsername.text = getString(R.string.username, user.login)
             tvFollowers.text = user.followers.toString()
             tvRepos.text = user.publicRepos.toString()

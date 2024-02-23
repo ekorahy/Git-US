@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GitUs</string>
+    <string name="app_name">GitUS</string>
     <string name="placeholder_username">Username</string>
     <string name="placeholder_type">Type</string>
     <string name="placeholder_full_name">Full Name</string>
@@ -19,4 +19,6 @@
 
     <string name="zero_followers">0 Follower :(</string>
     <string name="zero_following">0 Following :(</string>
+
+    <string name="development_warning">This feature is in the development stage</string>
 </resources>

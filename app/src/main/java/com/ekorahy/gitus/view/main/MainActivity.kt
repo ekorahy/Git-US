@@ -52,6 +52,10 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.isLoading.observe(this) {
             showLoading(it)
         }
+
+        binding.btnFavorite.setOnClickListener {
+            Snackbar.make(window.decorView.rootView, getString(R.string.development_warning), Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     private fun setUserData(user: List<ItemsItem>) {

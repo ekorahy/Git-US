@@ -20,10 +20,12 @@
         android:id="@+id/iv_bg"
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:contentDescription="@string/cd_bg_avatar"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ScrollView
@@ -51,8 +53,9 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/circle_button_style"
+                    android:contentDescription="@string/cd_back_button"
                     android:src="@drawable/ic_arrow_back"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -73,16 +76,18 @@
                     android:layout_height="40dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/circle_button_style"
+                    android:contentDescription="@string/cd_web_button"
                     android:src="@drawable/ic_web"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
 
                 <ImageButton
                     android:id="@+id/btn_share"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/circle_button_style"
+                    android:contentDescription="@string/cd_share_button"
                     android:src="@drawable/ic_share"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
             </LinearLayout>
 
             <ImageView
@@ -91,6 +96,7 @@
                 android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
+                android:contentDescription="@string/cd_iv_avatar"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
@@ -215,7 +221,8 @@
                 android:id="@+id/tb_follow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp" />
+                android:layout_marginHorizontal="16dp"
+                android:contentDescription="@string/cd_tab_layout" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vp_user"

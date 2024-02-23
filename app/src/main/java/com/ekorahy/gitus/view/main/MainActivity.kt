@@ -54,7 +54,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnFavorite.setOnClickListener {
-            Snackbar.make(window.decorView.rootView, getString(R.string.development_warning), Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(
+                window.decorView.rootView,
+                getString(R.string.development_warning),
+                Snackbar.LENGTH_SHORT
+            ).show()
         }
     }
 

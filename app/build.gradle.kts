@@ -63,4 +63,8 @@ dependencies {
 
     // viewpager
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    // viewmodel & livedata
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
 }

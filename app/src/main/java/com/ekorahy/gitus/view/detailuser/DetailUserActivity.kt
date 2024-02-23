@@ -2,22 +2,17 @@ package com.ekorahy.gitus.view.detailuser
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.ekorahy.gitus.R
 import com.ekorahy.gitus.adapter.SectionsPagerAdapter
 import com.ekorahy.gitus.data.remote.response.DetailUserResponse
-import com.ekorahy.gitus.data.remote.retrofit.ApiConfig
 import com.ekorahy.gitus.databinding.ActivityDetailUserBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import jp.wasabeef.glide.transformations.BlurTransformation
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class DetailUserActivity : AppCompatActivity() {
 
@@ -27,42 +22,34 @@ class DetailUserActivity : AppCompatActivity() {
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val detailViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[DetailViewModel::class.java]
+
         val username = intent.getStringExtra(USERNAME)
 
-        detailUser(username)
+        if (detailViewModel.username.value.isNullOrEmpty()) {
+            detailViewModel.setUsername(username.toString())
+            detailViewModel.findDetailUser(username.toString())
+        }
+
+        detailViewModel.detailUser.observe(this) { user ->
+            setUserData(user)
+        }
 
         val sectionPagerAdapter = SectionsPagerAdapter(this)
-        sectionPagerAdapter.username = intent.getStringExtra(USERNAME).toString()
+        sectionPagerAdapter.username = username.toString()
         val viewPager = binding.vpUser
         viewPager.adapter = sectionPagerAdapter
         val tabs = binding.tbFollow
         TabLayoutMediator(tabs, viewPager) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
-    }
 
-    private fun detailUser(username: String?) {
-        showLoading(true)
-        val client = username?.let { ApiConfig.getApiService().getDetailUser(it) }
-        client?.enqueue(object : Callback<DetailUserResponse> {
-            override fun onResponse(
-                call: Call<DetailUserResponse>,
-                response: Response<DetailUserResponse>
-            ) {
-                showLoading(false)
-                if (response.isSuccessful) {
-                    response.body()?.let { setUserData(it) }
-                } else {
-                    Log.d(TAG, "onFailure: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
-                showLoading(false)
-                Log.d(TAG, "onFailure: ${t.message}")
-            }
-
-        })
+        detailViewModel.isLoading.observe(this) {
+            showLoading(it)
+        }
     }
 
     private fun setUserData(user: DetailUserResponse) {
@@ -78,6 +65,7 @@ class DetailUserActivity : AppCompatActivity() {
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(binding.ivAvatar)
         with(binding) {
+            @Suppress("SENSELESS_COMPARISON")
             if (user.name !== null) {
                 tvFullName.text = user.name
             } else {
@@ -99,7 +87,7 @@ class DetailUserActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "detailuseractivity"
+        const val TAG = "DetailUserActivity"
         const val USERNAME = "username"
         private val TAB_TITLES = intArrayOf(
             R.string.label_followers,

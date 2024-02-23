@@ -1,12 +1,11 @@
 package com.ekorahy.gitus.view.follow
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ekorahy.gitus.data.remote.response.ItemsItem
 import com.ekorahy.gitus.data.remote.retrofit.ApiConfig
-import com.ekorahy.gitus.view.follow.FollowFragment.Companion.TAG
+import com.ekorahy.gitus.utils.Event
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +27,9 @@ class FollowViewModel : ViewModel() {
     private val _usernameFollowing = MutableLiveData<String?>(null)
     val usernameFollowing: LiveData<String?> = _usernameFollowing
 
+    private val _warningText = MutableLiveData<Event<String>>()
+    val warningText: LiveData<Event<String>> = _warningText
+
     fun getFollow(username: String, isFollowers: Boolean) {
         _isLoading.value = true
         val client = if (isFollowers) ApiConfig.getApiService()
@@ -45,13 +47,13 @@ class FollowViewModel : ViewModel() {
                         _listFollowingUser.value = response.body()
                     }
                 } else {
-                    Log.d(TAG, "onFailure: ${response.message()}")
+                    _warningText.value = Event(response.message())
                 }
             }
 
             override fun onFailure(call: Call<List<ItemsItem>>, t: Throwable) {
                 _isLoading.value = false
-                Log.d(TAG, "onFailure: ${t.message}")
+                _warningText.value = Event(t.message.toString())
             }
 
         })

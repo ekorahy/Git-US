@@ -70,4 +70,8 @@ dependencies {
 
     // webview
     implementation("androidx.webkit:webkit:1.10.0")
+
+    // ktx
+    implementation("androidx.activity:activity-ktx:1.8.2")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
 }

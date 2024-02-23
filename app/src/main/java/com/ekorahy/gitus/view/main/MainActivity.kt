@@ -3,16 +3,18 @@ package com.ekorahy.gitus.view.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ekorahy.gitus.R
 import com.ekorahy.gitus.adapter.UserAdapter
 import com.ekorahy.gitus.data.remote.response.ItemsItem
 import com.ekorahy.gitus.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val mainViewModel by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -21,12 +23,14 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.rvUsers.layoutManager = layoutManager
 
-        val mainViewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[MainViewModel::class.java]
         mainViewModel.listUser.observe(this) { user ->
             setUserData(user)
+        }
+
+        mainViewModel.warningText.observe(this) {
+            it.getContentIfNotHandled()?.let { warningText ->
+                Snackbar.make(window.decorView.rootView, warningText, Snackbar.LENGTH_SHORT).show()
+            }
         }
 
         with(binding) {
@@ -65,7 +69,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val TAG = "MainActivity"
         const val Q = "a"
     }
 }

@@ -1,12 +1,11 @@
 package com.ekorahy.gitus.view.detailuser
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ekorahy.gitus.data.remote.response.DetailUserResponse
 import com.ekorahy.gitus.data.remote.retrofit.ApiConfig
-import com.ekorahy.gitus.view.detailuser.DetailUserActivity.Companion.TAG
+import com.ekorahy.gitus.utils.Event
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +21,9 @@ class DetailViewModel: ViewModel() {
     private val _username = MutableLiveData<String?>(null)
     val username: LiveData<String?> = _username
 
+    private val _warningText = MutableLiveData<Event<String>>()
+    val warningText: LiveData<Event<String>> = _warningText
+
     fun findDetailUser(username: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().getDetailUser(username)
@@ -34,13 +36,13 @@ class DetailViewModel: ViewModel() {
                 if (response.isSuccessful) {
                     _detailUser.value = response.body()
                 } else {
-                    Log.d(TAG, "onFailure: ${response.message()}")
+                    _warningText.value = Event(response.message())
                 }
             }
 
             override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
                 _isLoading.value = false
-                Log.d(TAG, "onFailure: ${t.message}")
+                _warningText.value = Event(t.message.toString())
             }
         })
     }

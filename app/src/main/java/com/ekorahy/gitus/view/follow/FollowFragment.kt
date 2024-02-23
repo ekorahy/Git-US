@@ -5,15 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ekorahy.gitus.R
 import com.ekorahy.gitus.adapter.UserAdapter
 import com.ekorahy.gitus.data.remote.response.ItemsItem
 import com.ekorahy.gitus.databinding.FragmentFollowBinding
+import com.google.android.material.snackbar.Snackbar
 
 class FollowFragment : Fragment() {
 
     private lateinit var binding: FragmentFollowBinding
+    private val followViewModel by viewModels<FollowViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,11 +30,6 @@ class FollowFragment : Fragment() {
         val position = arguments?.getInt(ARG_POSITION, 0)
         val username = arguments?.getString(ARG_USERNAME)
 
-        val followViewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[FollowViewModel::class.java]
-
         if (followViewModel.usernameFollowers.value.isNullOrEmpty() && position == 1) {
             followViewModel.setUsernameFollowers(username.toString())
             followViewModel.getFollow(username.toString(), true)
@@ -40,13 +38,35 @@ class FollowFragment : Fragment() {
             followViewModel.getFollow(username.toString(), false)
         }
 
+        followViewModel.warningText.observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { warningText ->
+                Snackbar.make(view.rootView, warningText, Snackbar.LENGTH_SHORT).show()
+            }
+        }
+
         if (position == 1) {
             followViewModel.listFollowersUser.observe(viewLifecycleOwner) { user ->
-                setUserData(user)
+                if (user.isNullOrEmpty()) {
+                    with(binding) {
+                        rvUsers.visibility = View.GONE
+                        tvZeroFollow.visibility = View.VISIBLE
+                        tvZeroFollow.text = getString(R.string.zero_followers)
+                    }
+                } else {
+                    setUserData(user)
+                }
             }
         } else {
             followViewModel.listFollowingUser.observe(viewLifecycleOwner) { user ->
-                setUserData(user)
+                if (user.isNullOrEmpty()) {
+                    with(binding) {
+                        rvUsers.visibility = View.GONE
+                        tvZeroFollow.visibility = View.VISIBLE
+                        tvZeroFollow.text = getString(R.string.zero_following)
+                    }
+                } else {
+                    setUserData(user)
+                }
             }
         }
 
@@ -73,7 +93,6 @@ class FollowFragment : Fragment() {
     }
 
     companion object {
-        const val TAG = "FollowFragment"
         const val ARG_POSITION = "position"
         const val ARG_USERNAME = "username"
     }

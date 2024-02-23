@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
@@ -14,21 +14,18 @@ import com.ekorahy.gitus.data.remote.response.DetailUserResponse
 import com.ekorahy.gitus.databinding.ActivityDetailUserBinding
 import com.ekorahy.gitus.view.webview.ProfileActivity
 import com.ekorahy.gitus.view.webview.ProfileActivity.Companion.HTML_URL
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 class DetailUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailUserBinding
+    private val detailViewModel by viewModels<DetailViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val detailViewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[DetailViewModel::class.java]
 
         val username = intent.getStringExtra(USERNAME)
 
@@ -39,6 +36,12 @@ class DetailUserActivity : AppCompatActivity() {
 
         detailViewModel.detailUser.observe(this) { user ->
             setUserData(user)
+        }
+
+        detailViewModel.warningText.observe(this) {
+            it.getContentIfNotHandled()?.let { warningText ->
+                Snackbar.make(window.decorView.rootView, warningText, Snackbar.LENGTH_SHORT).show()
+            }
         }
 
         val sectionPagerAdapter = SectionsPagerAdapter(this)
@@ -74,7 +77,6 @@ class DetailUserActivity : AppCompatActivity() {
             } else {
                 tvFullName.text = getString(R.string.default_value_string)
             }
-            tvType.text = user.type
             tvUsername.text = getString(R.string.username, user.login)
             tvFollowers.text = user.followers.toString()
             tvRepos.text = user.publicRepos.toString()
@@ -122,7 +124,6 @@ class DetailUserActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val TAG = "DetailUserActivity"
         const val USERNAME = "username"
         private val TAB_TITLES = intArrayOf(
             R.string.label_followers,

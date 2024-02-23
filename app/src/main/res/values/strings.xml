@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">GitUS</string>
     <string name="placeholder_username">Username</string>
     <string name="placeholder_type">Type</string>
@@ -10,15 +10,16 @@
     <string name="label_followers">Followers</string>
     <string name="label_following">Following</string>
     <string name="label_repos">Repos</string>
-    <string name="label_bio">Bio</string>
+    <string name="label_bio" tools:ignore="UnusedResources">Bio</string>
     <string name="username">\@%s</string>
-    <string name="placeholder_bio">Just keep swimming.</string>
+    <string name="placeholder_bio" tools:ignore="UnusedResources">Just keep swimming.</string>
 
     <string name="share_via">Share Via</string>
     <string name="user_content">Username: \@%s\nFullname: %s\nFollowers: %s\nRepos: %s\nFollowing: %s</string>
 
     <string name="zero_followers">0 Follower :(</string>
     <string name="zero_following">0 Following :(</string>
+    <string name="user_not_found">User not found :(</string>
 
     <string name="development_warning">This feature is in the development stage</string>
 

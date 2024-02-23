@@ -1,11 +1,8 @@
 package com.ekorahy.gitus.view.webview
 
 import android.annotation.SuppressLint
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.net.toUri
-import com.ekorahy.gitus.R
 import com.ekorahy.gitus.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {

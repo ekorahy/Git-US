@@ -23,6 +23,9 @@ class MainViewModel : ViewModel() {
     private val _warningText = MutableLiveData<Event<String>>()
     val warningText: LiveData<Event<String>> = _warningText
 
+    private val _totalCount = MutableLiveData<Int>()
+    val totalCount: LiveData<Int> = _totalCount
+
     init {
         findUsers(Q)
     }
@@ -38,6 +41,7 @@ class MainViewModel : ViewModel() {
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     _listUser.value = response.body()?.items
+                    _totalCount.value = response.body()?.totalCount
                 } else {
                     _warningText.value = Event(response.message())
                 }

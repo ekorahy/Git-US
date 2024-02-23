@@ -53,6 +53,10 @@ class MainActivity : AppCompatActivity() {
             showLoading(it)
         }
 
+        mainViewModel.totalCount.observe(this) {
+            showTextNotFound(it)
+        }
+
         binding.btnFavorite.setOnClickListener {
             Snackbar.make(
                 window.decorView.rootView,
@@ -66,6 +70,20 @@ class MainActivity : AppCompatActivity() {
         val adapter = UserAdapter()
         adapter.submitList(user)
         binding.rvUsers.adapter = adapter
+    }
+
+    private fun showTextNotFound(totalCount: Int) {
+        if (totalCount == 0) {
+            with(binding) {
+                rvUsers.visibility = View.GONE
+                tvNotfound.visibility = View.VISIBLE
+            }
+        } else {
+            with(binding) {
+                rvUsers.visibility = View.VISIBLE
+                tvNotfound.visibility = View.GONE
+            }
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {

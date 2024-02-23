@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="md_theme_primary">#202E41</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
     <color name="md_theme_primaryContainer">#425065</color>
@@ -24,7 +24,7 @@
     <color name="md_theme_onSurfaceVariant">#44474C</color>
     <color name="md_theme_outline">#75777D</color>
     <color name="md_theme_outlineVariant">#C5C6CD</color>
-    <color name="md_theme_scrim">#000000</color>
+    <color name="md_theme_scrim" tools:ignore="UnusedResources">#000000</color>
     <color name="md_theme_inverseSurface">#303032</color>
     <color name="md_theme_inverseOnSurface">#F2F0F2</color>
     <color name="md_theme_inversePrimary">#B9C7E0</color>
@@ -47,98 +47,178 @@
     <color name="md_theme_surfaceContainer">#EFEDEF</color>
     <color name="md_theme_surfaceContainerHigh">#EAE7E9</color>
     <color name="md_theme_surfaceContainerHighest">#E4E2E4</color>
-    <color name="md_theme_primary_mediumContrast">#202E41</color>
-    <color name="md_theme_onPrimary_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_primaryContainer_mediumContrast">#425065</color>
-    <color name="md_theme_onPrimaryContainer_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_secondary_mediumContrast">#354456</color>
-    <color name="md_theme_onSecondary_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_secondaryContainer_mediumContrast">#677689</color>
-    <color name="md_theme_onSecondaryContainer_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_tertiary_mediumContrast">#3D444A</color>
-    <color name="md_theme_onTertiary_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_tertiaryContainer_mediumContrast">#6F757C</color>
-    <color name="md_theme_onTertiaryContainer_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_error_mediumContrast">#8A0027</color>
-    <color name="md_theme_onError_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_errorContainer_mediumContrast">#DC2C4F</color>
-    <color name="md_theme_onErrorContainer_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_background_mediumContrast">#FBF9FA</color>
-    <color name="md_theme_onBackground_mediumContrast">#1B1B1D</color>
-    <color name="md_theme_surface_mediumContrast">#FBF9FA</color>
-    <color name="md_theme_onSurface_mediumContrast">#1B1B1D</color>
-    <color name="md_theme_surfaceVariant_mediumContrast">#E1E2E9</color>
-    <color name="md_theme_onSurfaceVariant_mediumContrast">#404348</color>
-    <color name="md_theme_outline_mediumContrast">#5C5F65</color>
-    <color name="md_theme_outlineVariant_mediumContrast">#787B81</color>
-    <color name="md_theme_scrim_mediumContrast">#000000</color>
-    <color name="md_theme_inverseSurface_mediumContrast">#303032</color>
-    <color name="md_theme_inverseOnSurface_mediumContrast">#F2F0F2</color>
-    <color name="md_theme_inversePrimary_mediumContrast">#B9C7E0</color>
-    <color name="md_theme_primaryFixed_mediumContrast">#67758C</color>
-    <color name="md_theme_onPrimaryFixed_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_primaryFixedDim_mediumContrast">#4F5D72</color>
-    <color name="md_theme_onPrimaryFixedVariant_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_secondaryFixed_mediumContrast">#677689</color>
-    <color name="md_theme_onSecondaryFixed_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_secondaryFixedDim_mediumContrast">#4F5D70</color>
-    <color name="md_theme_onSecondaryFixedVariant_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_tertiaryFixed_mediumContrast">#6F757C</color>
-    <color name="md_theme_onTertiaryFixed_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_tertiaryFixedDim_mediumContrast">#565D63</color>
-    <color name="md_theme_onTertiaryFixedVariant_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_surfaceDim_mediumContrast">#DBD9DB</color>
-    <color name="md_theme_surfaceBright_mediumContrast">#FBF9FA</color>
-    <color name="md_theme_surfaceContainerLowest_mediumContrast">#FFFFFF</color>
-    <color name="md_theme_surfaceContainerLow_mediumContrast">#F5F3F5</color>
-    <color name="md_theme_surfaceContainer_mediumContrast">#EFEDEF</color>
-    <color name="md_theme_surfaceContainerHigh_mediumContrast">#EAE7E9</color>
-    <color name="md_theme_surfaceContainerHighest_mediumContrast">#E4E2E4</color>
-    <color name="md_theme_primary_highContrast">#142335</color>
-    <color name="md_theme_onPrimary_highContrast">#FFFFFF</color>
-    <color name="md_theme_primaryContainer_highContrast">#364458</color>
-    <color name="md_theme_onPrimaryContainer_highContrast">#FFFFFF</color>
-    <color name="md_theme_secondary_highContrast">#142334</color>
-    <color name="md_theme_onSecondary_highContrast">#FFFFFF</color>
-    <color name="md_theme_secondaryContainer_highContrast">#354456</color>
-    <color name="md_theme_onSecondaryContainer_highContrast">#FFFFFF</color>
-    <color name="md_theme_tertiary_highContrast">#1D2329</color>
-    <color name="md_theme_onTertiary_highContrast">#FFFFFF</color>
-    <color name="md_theme_tertiaryContainer_highContrast">#3D444A</color>
-    <color name="md_theme_onTertiaryContainer_highContrast">#FFFFFF</color>
-    <color name="md_theme_error_highContrast">#4D0012</color>
-    <color name="md_theme_onError_highContrast">#FFFFFF</color>
-    <color name="md_theme_errorContainer_highContrast">#8A0027</color>
-    <color name="md_theme_onErrorContainer_highContrast">#FFFFFF</color>
-    <color name="md_theme_background_highContrast">#FBF9FA</color>
-    <color name="md_theme_onBackground_highContrast">#1B1B1D</color>
-    <color name="md_theme_surface_highContrast">#FBF9FA</color>
-    <color name="md_theme_onSurface_highContrast">#000000</color>
-    <color name="md_theme_surfaceVariant_highContrast">#E1E2E9</color>
-    <color name="md_theme_onSurfaceVariant_highContrast">#212429</color>
-    <color name="md_theme_outline_highContrast">#404348</color>
-    <color name="md_theme_outlineVariant_highContrast">#404348</color>
-    <color name="md_theme_scrim_highContrast">#000000</color>
-    <color name="md_theme_inverseSurface_highContrast">#303032</color>
-    <color name="md_theme_inverseOnSurface_highContrast">#FFFFFF</color>
-    <color name="md_theme_inversePrimary_highContrast">#E3ECFF</color>
-    <color name="md_theme_primaryFixed_highContrast">#364458</color>
-    <color name="md_theme_onPrimaryFixed_highContrast">#FFFFFF</color>
-    <color name="md_theme_primaryFixedDim_highContrast">#1F2D41</color>
-    <color name="md_theme_onPrimaryFixedVariant_highContrast">#FFFFFF</color>
-    <color name="md_theme_secondaryFixed_highContrast">#354456</color>
-    <color name="md_theme_onSecondaryFixed_highContrast">#FFFFFF</color>
-    <color name="md_theme_secondaryFixedDim_highContrast">#1F2E3F</color>
-    <color name="md_theme_onSecondaryFixedVariant_highContrast">#FFFFFF</color>
-    <color name="md_theme_tertiaryFixed_highContrast">#3D444A</color>
-    <color name="md_theme_onTertiaryFixed_highContrast">#FFFFFF</color>
-    <color name="md_theme_tertiaryFixedDim_highContrast">#272D33</color>
-    <color name="md_theme_onTertiaryFixedVariant_highContrast">#FFFFFF</color>
-    <color name="md_theme_surfaceDim_highContrast">#DBD9DB</color>
-    <color name="md_theme_surfaceBright_highContrast">#FBF9FA</color>
-    <color name="md_theme_surfaceContainerLowest_highContrast">#FFFFFF</color>
-    <color name="md_theme_surfaceContainerLow_highContrast">#F5F3F5</color>
-    <color name="md_theme_surfaceContainer_highContrast">#EFEDEF</color>
-    <color name="md_theme_surfaceContainerHigh_highContrast">#EAE7E9</color>
-    <color name="md_theme_surfaceContainerHighest_highContrast">#E4E2E4</color>
+    <color name="md_theme_primary_mediumContrast" tools:ignore="UnusedResources">#202E41</color>
+    <color name="md_theme_onPrimary_mediumContrast" tools:ignore="UnusedResources">#FFFFFF</color>
+    <color name="md_theme_primaryContainer_mediumContrast" tools:ignore="UnusedResources">#425065
+    </color>
+    <color name="md_theme_onPrimaryContainer_mediumContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_secondary_mediumContrast" tools:ignore="UnusedResources">#354456</color>
+    <color name="md_theme_onSecondary_mediumContrast" tools:ignore="UnusedResources">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer_mediumContrast" tools:ignore="UnusedResources">
+        #677689
+    </color>
+    <color name="md_theme_onSecondaryContainer_mediumContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_tertiary_mediumContrast" tools:ignore="UnusedResources">#3D444A</color>
+    <color name="md_theme_onTertiary_mediumContrast" tools:ignore="UnusedResources">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer_mediumContrast" tools:ignore="UnusedResources">#6F757C
+    </color>
+    <color name="md_theme_onTertiaryContainer_mediumContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_error_mediumContrast" tools:ignore="UnusedResources">#8A0027</color>
+    <color name="md_theme_onError_mediumContrast" tools:ignore="UnusedResources">#FFFFFF</color>
+    <color name="md_theme_errorContainer_mediumContrast" tools:ignore="UnusedResources">#DC2C4F
+    </color>
+    <color name="md_theme_onErrorContainer_mediumContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_background_mediumContrast" tools:ignore="UnusedResources">#FBF9FA</color>
+    <color name="md_theme_onBackground_mediumContrast" tools:ignore="UnusedResources">#1B1B1D
+    </color>
+    <color name="md_theme_surface_mediumContrast" tools:ignore="UnusedResources">#FBF9FA</color>
+    <color name="md_theme_onSurface_mediumContrast" tools:ignore="UnusedResources">#1B1B1D</color>
+    <color name="md_theme_surfaceVariant_mediumContrast" tools:ignore="UnusedResources">#E1E2E9
+    </color>
+    <color name="md_theme_onSurfaceVariant_mediumContrast" tools:ignore="UnusedResources">#404348
+    </color>
+    <color name="md_theme_outline_mediumContrast" tools:ignore="UnusedResources">#5C5F65</color>
+    <color name="md_theme_outlineVariant_mediumContrast" tools:ignore="UnusedResources">#787B81
+    </color>
+    <color name="md_theme_scrim_mediumContrast" tools:ignore="UnusedResources">#000000</color>
+    <color name="md_theme_inverseSurface_mediumContrast" tools:ignore="UnusedResources">#303032
+    </color>
+    <color name="md_theme_inverseOnSurface_mediumContrast" tools:ignore="UnusedResources">#F2F0F2
+    </color>
+    <color name="md_theme_inversePrimary_mediumContrast" tools:ignore="UnusedResources">#B9C7E0
+    </color>
+    <color name="md_theme_primaryFixed_mediumContrast" tools:ignore="UnusedResources">#67758C
+    </color>
+    <color name="md_theme_onPrimaryFixed_mediumContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_primaryFixedDim_mediumContrast" tools:ignore="UnusedResources">#4F5D72
+    </color>
+    <color name="md_theme_onPrimaryFixedVariant_mediumContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_secondaryFixed_mediumContrast" tools:ignore="UnusedResources">#677689
+    </color>
+    <color name="md_theme_onSecondaryFixed_mediumContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_secondaryFixedDim_mediumContrast" tools:ignore="UnusedResources">#4F5D70
+    </color>
+    <color name="md_theme_onSecondaryFixedVariant_mediumContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_tertiaryFixed_mediumContrast" tools:ignore="UnusedResources">#6F757C
+    </color>
+    <color name="md_theme_onTertiaryFixed_mediumContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_tertiaryFixedDim_mediumContrast" tools:ignore="UnusedResources">#565D63
+    </color>
+    <color name="md_theme_onTertiaryFixedVariant_mediumContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_surfaceDim_mediumContrast" tools:ignore="UnusedResources">#DBD9DB</color>
+    <color name="md_theme_surfaceBright_mediumContrast" tools:ignore="UnusedResources">#FBF9FA
+    </color>
+    <color name="md_theme_surfaceContainerLowest_mediumContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_surfaceContainerLow_mediumContrast" tools:ignore="UnusedResources">
+        #F5F3F5
+    </color>
+    <color name="md_theme_surfaceContainer_mediumContrast" tools:ignore="UnusedResources">#EFEDEF
+    </color>
+    <color name="md_theme_surfaceContainerHigh_mediumContrast" tools:ignore="UnusedResources">
+        #EAE7E9
+    </color>
+    <color name="md_theme_surfaceContainerHighest_mediumContrast" tools:ignore="UnusedResources">
+        #E4E2E4
+    </color>
+    <color name="md_theme_primary_highContrast" tools:ignore="UnusedResources">#142335</color>
+    <color name="md_theme_onPrimary_highContrast" tools:ignore="UnusedResources">#FFFFFF</color>
+    <color name="md_theme_primaryContainer_highContrast" tools:ignore="UnusedResources">#364458
+    </color>
+    <color name="md_theme_onPrimaryContainer_highContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_secondary_highContrast" tools:ignore="UnusedResources">#142334</color>
+    <color name="md_theme_onSecondary_highContrast" tools:ignore="UnusedResources">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer_highContrast" tools:ignore="UnusedResources">#354456
+    </color>
+    <color name="md_theme_onSecondaryContainer_highContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_tertiary_highContrast" tools:ignore="UnusedResources">#1D2329</color>
+    <color name="md_theme_onTertiary_highContrast" tools:ignore="UnusedResources">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer_highContrast" tools:ignore="UnusedResources">#3D444A
+    </color>
+    <color name="md_theme_onTertiaryContainer_highContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_error_highContrast" tools:ignore="UnusedResources">#4D0012</color>
+    <color name="md_theme_onError_highContrast" tools:ignore="UnusedResources">#FFFFFF</color>
+    <color name="md_theme_errorContainer_highContrast" tools:ignore="UnusedResources">#8A0027
+    </color>
+    <color name="md_theme_onErrorContainer_highContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_background_highContrast" tools:ignore="UnusedResources">#FBF9FA</color>
+    <color name="md_theme_onBackground_highContrast" tools:ignore="UnusedResources">#1B1B1D</color>
+    <color name="md_theme_surface_highContrast" tools:ignore="UnusedResources">#FBF9FA</color>
+    <color name="md_theme_onSurface_highContrast" tools:ignore="UnusedResources">#000000</color>
+    <color name="md_theme_surfaceVariant_highContrast" tools:ignore="UnusedResources">#E1E2E9
+    </color>
+    <color name="md_theme_onSurfaceVariant_highContrast" tools:ignore="UnusedResources">#212429
+    </color>
+    <color name="md_theme_outline_highContrast" tools:ignore="UnusedResources">#404348</color>
+    <color name="md_theme_outlineVariant_highContrast" tools:ignore="UnusedResources">#404348
+    </color>
+    <color name="md_theme_scrim_highContrast" tools:ignore="UnusedResources">#000000</color>
+    <color name="md_theme_inverseSurface_highContrast" tools:ignore="UnusedResources">#303032
+    </color>
+    <color name="md_theme_inverseOnSurface_highContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_inversePrimary_highContrast" tools:ignore="UnusedResources">#E3ECFF
+    </color>
+    <color name="md_theme_primaryFixed_highContrast" tools:ignore="UnusedResources">#364458</color>
+    <color name="md_theme_onPrimaryFixed_highContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_primaryFixedDim_highContrast" tools:ignore="UnusedResources">#1F2D41
+    </color>
+    <color name="md_theme_onPrimaryFixedVariant_highContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_secondaryFixed_highContrast" tools:ignore="UnusedResources">#354456
+    </color>
+    <color name="md_theme_onSecondaryFixed_highContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_secondaryFixedDim_highContrast" tools:ignore="UnusedResources">#1F2E3F
+    </color>
+    <color name="md_theme_onSecondaryFixedVariant_highContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_tertiaryFixed_highContrast" tools:ignore="UnusedResources">#3D444A</color>
+    <color name="md_theme_onTertiaryFixed_highContrast" tools:ignore="UnusedResources">#FFFFFF
+    </color>
+    <color name="md_theme_tertiaryFixedDim_highContrast" tools:ignore="UnusedResources">#272D33
+    </color>
+    <color name="md_theme_onTertiaryFixedVariant_highContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_surfaceDim_highContrast" tools:ignore="UnusedResources">#DBD9DB</color>
+    <color name="md_theme_surfaceBright_highContrast" tools:ignore="UnusedResources">#FBF9FA</color>
+    <color name="md_theme_surfaceContainerLowest_highContrast" tools:ignore="UnusedResources">
+        #FFFFFF
+    </color>
+    <color name="md_theme_surfaceContainerLow_highContrast" tools:ignore="UnusedResources">#F5F3F5
+    </color>
+    <color name="md_theme_surfaceContainer_highContrast" tools:ignore="UnusedResources">#EFEDEF
+    </color>
+    <color name="md_theme_surfaceContainerHigh_highContrast" tools:ignore="UnusedResources">
+        #EAE7E9
+    </color>
+    <color name="md_theme_surfaceContainerHighest_highContrast" tools:ignore="UnusedResources">
+        #E4E2E4
+    </color>
 </resources>

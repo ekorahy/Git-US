@@ -14,5 +14,6 @@
     <string name="username">\@%s</string>
     <string name="placeholder_bio">Just keep swimming.</string>
 
-    <string name="content_tab_text">This is Tab %1$d</string>
+    <string name="share_via">Share Via</string>
+    <string name="user_content">Username: \@%s\nFullname: %s\nFollowers: %s\nRepos: %s\nFollowing: %s</string>
 </resources>

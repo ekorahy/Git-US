@@ -10,10 +10,8 @@ data class DetailUserResponse(
     @field:SerializedName("public_repos")
     val publicRepos: Int,
 
-    /*
-    @field:SerializedName("url")
-    val url: String,
-     */
+    @field:SerializedName("html_url")
+    val htmlUrl: String,
 
     @field:SerializedName("followers")
     val followers: Int,

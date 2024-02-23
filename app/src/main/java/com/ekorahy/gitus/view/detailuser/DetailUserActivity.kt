@@ -1,5 +1,6 @@
 package com.ekorahy.gitus.view.detailuser
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,8 @@ import com.ekorahy.gitus.R
 import com.ekorahy.gitus.adapter.SectionsPagerAdapter
 import com.ekorahy.gitus.data.remote.response.DetailUserResponse
 import com.ekorahy.gitus.databinding.ActivityDetailUserBinding
+import com.ekorahy.gitus.view.webview.ProfileActivity
+import com.ekorahy.gitus.view.webview.ProfileActivity.Companion.HTML_URL
 import com.google.android.material.tabs.TabLayoutMediator
 import jp.wasabeef.glide.transformations.BlurTransformation
 
@@ -75,6 +78,37 @@ class DetailUserActivity : AppCompatActivity() {
             tvFollowers.text = user.followers.toString()
             tvRepos.text = user.publicRepos.toString()
             tvFollowing.text = user.following.toString()
+            btnBack.setOnClickListener {
+                onBackPressedDispatcher.onBackPressed()
+            }
+            btnProfileWebview.setOnClickListener {
+                val intent = Intent(this@DetailUserActivity, ProfileActivity::class.java)
+                intent.putExtra(HTML_URL, user.htmlUrl)
+                startActivity(intent)
+            }
+            btnShare.setOnClickListener {
+                val shareUrl = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    type = "text/plain"
+                    @Suppress("UselessCallOnNotNull")
+                    putExtra(
+                        Intent.EXTRA_TEXT,
+                        getString(
+                            R.string.user_content,
+                            user.login,
+                            if (user.name.isNullOrEmpty()) {
+                                getString(R.string.default_value_string)
+                            } else {
+                                user.name
+                            },
+                            user.followers.toString(),
+                            user.publicRepos.toString(),
+                            user.following.toString()
+                        )
+                    )
+                }
+                startActivity(Intent.createChooser(shareUrl, getString(R.string.share_via)))
+            }
         }
     }
 

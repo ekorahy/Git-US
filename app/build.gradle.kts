@@ -67,4 +67,7 @@ dependencies {
     // viewmodel & livedata
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+
+    // webview
+    implementation("androidx.webkit:webkit:1.10.0")
 }

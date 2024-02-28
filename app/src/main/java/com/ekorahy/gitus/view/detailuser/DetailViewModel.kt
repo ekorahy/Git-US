@@ -1,16 +1,21 @@
 package com.ekorahy.gitus.view.detailuser
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ekorahy.gitus.data.local.FavoriteUser
 import com.ekorahy.gitus.data.remote.response.DetailUserResponse
 import com.ekorahy.gitus.data.remote.retrofit.ApiConfig
+import com.ekorahy.gitus.repository.FavoriteUserRepository
 import com.ekorahy.gitus.utils.Event
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel(application: Application) : ViewModel() {
+    private val mFavoriteUserRepository: FavoriteUserRepository =
+        FavoriteUserRepository(application)
 
     private val _detailUser = MutableLiveData<DetailUserResponse>()
     val detailUser: LiveData<DetailUserResponse> = _detailUser
@@ -46,6 +51,17 @@ class DetailViewModel : ViewModel() {
             }
         })
     }
+
+    fun insert(favoriteUser: FavoriteUser) {
+        mFavoriteUserRepository.insert(favoriteUser)
+    }
+
+    fun deleteByUsername(username: String) {
+        mFavoriteUserRepository.deleteByUsername(username)
+    }
+
+    fun getFavoriteUserByUsername(username: String): LiveData<FavoriteUser> =
+        mFavoriteUserRepository.getFavoriteUserByUsername(username)
 
     fun setUsername(username: String) {
         _username.value = username

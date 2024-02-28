@@ -10,8 +10,10 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.ekorahy.gitus.R
 import com.ekorahy.gitus.adapter.SectionsPagerAdapter
+import com.ekorahy.gitus.data.local.FavoriteUser
 import com.ekorahy.gitus.data.remote.response.DetailUserResponse
 import com.ekorahy.gitus.databinding.ActivityDetailUserBinding
+import com.ekorahy.gitus.view.ViewModelFactory
 import com.ekorahy.gitus.view.webview.ProfileActivity
 import com.ekorahy.gitus.view.webview.ProfileActivity.Companion.HTML_URL
 import com.google.android.material.snackbar.Snackbar
@@ -21,7 +23,12 @@ import jp.wasabeef.glide.transformations.BlurTransformation
 class DetailUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailUserBinding
-    private val detailViewModel by viewModels<DetailViewModel>()
+    private val detailViewModel by viewModels<DetailViewModel> {
+        ViewModelFactory.getInstance(application)
+    }
+
+    private var isFavorite: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
@@ -32,6 +39,16 @@ class DetailUserActivity : AppCompatActivity() {
         if (detailViewModel.username.value.isNullOrEmpty()) {
             detailViewModel.setUsername(username.toString())
             detailViewModel.findDetailUser(username.toString())
+        }
+
+        detailViewModel.getFavoriteUserByUsername(username.toString()).observe(this) {
+            isFavorite = if (it != null) {
+                binding.fabFavorite.setImageResource(R.drawable.ic_favorite_fill)
+                true
+            } else {
+                binding.fabFavorite.setImageResource(R.drawable.ic_favorite_border)
+                false
+            }
         }
 
         detailViewModel.detailUser.observe(this) { user ->
@@ -112,6 +129,18 @@ class DetailUserActivity : AppCompatActivity() {
                     )
                 }
                 startActivity(Intent.createChooser(shareUrl, getString(R.string.share_via)))
+            }
+            fabFavorite.setOnClickListener {
+                val favoriteUser = FavoriteUser(
+                    username = user.login,
+                    avatarUrl = user.avatarUrl,
+                    type = user.type
+                )
+                if (isFavorite) {
+                    detailViewModel.deleteByUsername(user.login)
+                } else {
+                    detailViewModel.insert(favoriteUser)
+                }
             }
         }
     }

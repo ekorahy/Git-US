@@ -58,6 +58,7 @@
                     tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
 
                 <TextView
+                    android:id="@+id/tv_label_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"

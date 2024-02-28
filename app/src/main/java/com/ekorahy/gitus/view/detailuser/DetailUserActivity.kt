@@ -81,6 +81,7 @@ class DetailUserActivity : AppCompatActivity() {
             tvFollowers.text = user.followers.toString()
             tvRepos.text = user.publicRepos.toString()
             tvFollowing.text = user.following.toString()
+            tvLabelDetail.text = getString(R.string.label_detail_user, user.type)
             btnBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
             }

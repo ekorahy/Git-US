@@ -1,5 +1,6 @@
 package com.ekorahy.gitus.view.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import com.ekorahy.gitus.R
 import com.ekorahy.gitus.adapter.UserAdapter
 import com.ekorahy.gitus.data.remote.response.ItemsItem
 import com.ekorahy.gitus.databinding.ActivityMainBinding
+import com.ekorahy.gitus.view.favorite.FavoriteActivity
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -58,11 +60,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnFavorite.setOnClickListener {
-            Snackbar.make(
-                window.decorView.rootView,
-                getString(R.string.development_warning),
-                Snackbar.LENGTH_SHORT
-            ).show()
+            val intent = Intent(this, FavoriteActivity::class.java)
+            startActivity(intent)
         }
     }
 

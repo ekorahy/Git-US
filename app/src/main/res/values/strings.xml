@@ -9,6 +9,7 @@
     <string name="default_value_string">-</string>
     <string name="label_followers">Followers</string>
     <string name="label_following">Following</string>
+    <string name="label_favorite_user">Favorite Users</string>
     <string name="label_repos">Repos</string>
     <string name="label_bio" tools:ignore="UnusedResources">Bio</string>
     <string name="username">\@%s</string>
@@ -20,6 +21,7 @@
     <string name="zero_followers">0 Follower :(</string>
     <string name="zero_following">0 Following :(</string>
     <string name="user_not_found">User not found :(</string>
+    <string name="empty_favorite_user">Favorite users are empty :(</string>
 
     <string name="development_warning">This feature is in the development stage</string>
 

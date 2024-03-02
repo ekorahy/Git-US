@@ -1,4 +1,4 @@
-package com.ekorahy.gitus.data.local
+package com.ekorahy.gitus.data.local.entity
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

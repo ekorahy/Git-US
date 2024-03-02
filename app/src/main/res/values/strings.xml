@@ -22,6 +22,7 @@
     <string name="zero_following">0 Following :(</string>
     <string name="user_not_found">User not found :(</string>
     <string name="empty_favorite_user">Favorite users are empty :(</string>
+    <string name="hint_search">Whom are you looking for?</string>
 
     <string name="development_warning">This feature is in the development stage</string>
 
@@ -36,4 +37,5 @@
     <string name="cd_favorite_button">Favorite button</string>
     <string name="cd_bg_color">Background color</string>
     <string name="cd_logo">Logo image</string>
+    <string name="cd_fab">Favorite button</string>
 </resources>

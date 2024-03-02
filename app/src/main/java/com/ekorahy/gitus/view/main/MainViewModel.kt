@@ -4,16 +4,20 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import com.ekorahy.gitus.data.datastore.SettingPreferences
 import com.ekorahy.gitus.data.remote.response.GithubResponse
 import com.ekorahy.gitus.data.remote.response.ItemsItem
 import com.ekorahy.gitus.data.remote.retrofit.ApiConfig
 import com.ekorahy.gitus.utils.Event
 import com.ekorahy.gitus.view.main.MainActivity.Companion.Q
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel : ViewModel() {
+class MainViewModel(private val pref: SettingPreferences) : ViewModel() {
 
     private val _listUser = MutableLiveData<List<ItemsItem>>()
     val listUser: LiveData<List<ItemsItem>> = _listUser
@@ -53,5 +57,15 @@ class MainViewModel : ViewModel() {
                 _warningText.value = Event(t.message.toString())
             }
         })
+    }
+
+    fun getThemeSettings(): LiveData<Boolean> {
+        return pref.getThemeSetting().asLiveData()
+    }
+
+    fun saveThemeSetting(isDarkModeActive: Boolean) {
+        viewModelScope.launch {
+            pref.saveThemeSetting(isDarkModeActive)
+        }
     }
 }

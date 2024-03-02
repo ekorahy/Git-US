@@ -18,7 +18,7 @@ android {
         buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
         buildConfigField(
             "String", "GITHUB_TOKEN",
-            "\"{GITHUB_USER}\""
+            "\"token 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\""
         )
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -81,4 +81,11 @@ dependencies {
     // room
     implementation("androidx.room:room-runtime:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
+
+    // data store
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 }

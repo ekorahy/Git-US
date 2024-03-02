@@ -2,9 +2,9 @@ package com.ekorahy.gitus.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import com.ekorahy.gitus.data.local.FavoriteUser
-import com.ekorahy.gitus.data.local.FavoriteUserDao
-import com.ekorahy.gitus.data.local.FavoriteUserDatabase
+import com.ekorahy.gitus.data.local.entity.FavoriteUser
+import com.ekorahy.gitus.data.local.room.FavoriteUserDao
+import com.ekorahy.gitus.data.local.room.FavoriteUserDatabase
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

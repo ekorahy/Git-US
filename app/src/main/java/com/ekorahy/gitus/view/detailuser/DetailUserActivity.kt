@@ -10,7 +10,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.ekorahy.gitus.R
 import com.ekorahy.gitus.adapter.SectionsPagerAdapter
-import com.ekorahy.gitus.data.local.FavoriteUser
+import com.ekorahy.gitus.data.local.entity.FavoriteUser
 import com.ekorahy.gitus.data.remote.response.DetailUserResponse
 import com.ekorahy.gitus.databinding.ActivityDetailUserBinding
 import com.ekorahy.gitus.view.ViewModelFactory

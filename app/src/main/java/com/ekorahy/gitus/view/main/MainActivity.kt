@@ -1,22 +1,28 @@
 package com.ekorahy.gitus.view.main
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.CompoundButton
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ekorahy.gitus.R
 import com.ekorahy.gitus.adapter.UserAdapter
+import com.ekorahy.gitus.data.datastore.SettingPreferences
+import com.ekorahy.gitus.data.datastore.dataStore
 import com.ekorahy.gitus.data.remote.response.ItemsItem
 import com.ekorahy.gitus.databinding.ActivityMainBinding
+import com.ekorahy.gitus.view.ViewModelFactoryDataStore
 import com.ekorahy.gitus.view.favorite.FavoriteActivity
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val mainViewModel by viewModels<MainViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -24,6 +30,26 @@ class MainActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvUsers.layoutManager = layoutManager
+
+        val pref = SettingPreferences.getInstance(application.dataStore)
+        val mainViewModel by viewModels<MainViewModel> {
+            ViewModelFactoryDataStore(pref)
+        }
+
+        mainViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                binding.msTheme.isChecked = true
+                binding.msTheme.trackTintList = ColorStateList.valueOf(resources.getColor(R.color.md_theme_onPrimary))
+                binding.msTheme.thumbTintList = ColorStateList.valueOf(resources.getColor(R.color.md_theme_primary))
+                binding.msTheme.thumbIconTintList = ColorStateList.valueOf(resources.getColor(R.color.md_theme_onPrimary))
+                binding.msTheme.setThumbIconResource(R.drawable.ic_dark_mode)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                binding.msTheme.isChecked = false
+                binding.msTheme.setThumbIconResource(R.drawable.ic_light_mode)
+            }
+        }
 
         mainViewModel.listUser.observe(this) { user ->
             setUserData(user)
@@ -62,6 +88,10 @@ class MainActivity : AppCompatActivity() {
         binding.btnFavorite.setOnClickListener {
             val intent = Intent(this, FavoriteActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.msTheme.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
+            mainViewModel.saveThemeSetting(isChecked)
         }
     }
 

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ekorahy.gitus.data.local.FavoriteUser
+import com.ekorahy.gitus.data.local.entity.FavoriteUser
 import com.ekorahy.gitus.data.remote.response.DetailUserResponse
 import com.ekorahy.gitus.data.remote.retrofit.ApiConfig
 import com.ekorahy.gitus.repository.FavoriteUserRepository

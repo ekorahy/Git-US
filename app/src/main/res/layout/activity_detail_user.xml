@@ -28,10 +28,69 @@
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_bg"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_back_button"
+            app:icon="@drawable/ic_arrow_back"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
+
+        <TextView
+            android:id="@+id/tv_label_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/google_sans_medium"
+            android:textColor="@color/md_theme_onPrimary"
+            android:textSize="16sp"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/label_detail_user" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_profile_webview"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/cd_web_button"
+            app:icon="@drawable/ic_web"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
+
+        <Button
+            android:id="@+id/btn_share"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_share_button"
+            app:icon="@drawable/ic_share"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
+    </LinearLayout>
+
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -40,57 +99,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/btn_back"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/circle_button_style"
-                    android:contentDescription="@string/cd_back_button"
-                    android:src="@drawable/ic_arrow_back"
-                    tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
-
-                <TextView
-                    android:id="@+id/tv_label_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/google_sans_medium"
-                    tools:text="@string/label_detail_user"
-                    android:textSize="16sp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <ImageButton
-                    android:id="@+id/btn_profile_webview"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/circle_button_style"
-                    android:contentDescription="@string/cd_web_button"
-                    android:src="@drawable/ic_web"
-                    tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
-
-                <ImageButton
-                    android:id="@+id/btn_share"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/circle_button_style"
-                    android:contentDescription="@string/cd_share_button"
-                    android:src="@drawable/ic_share"
-                    tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
-            </LinearLayout>
 
             <ImageView
                 android:id="@+id/iv_avatar"
@@ -241,9 +249,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
+        android:contentDescription="@string/cd_fab"
         android:src="@drawable/ic_favorite_border"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RedundantDescriptionCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

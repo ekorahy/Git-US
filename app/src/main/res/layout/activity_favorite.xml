@@ -17,61 +17,63 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/scrollView4"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/btn_back"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_back_button"
+            app:icon="@drawable/ic_arrow_back"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
+
+        <TextView
+            android:id="@+id/tv_label_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/google_sans_medium"
+            android:text="@string/label_favorite_user"
+            android:textColor="@color/md_theme_primary"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_favorite_users"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/btn_back"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/circle_button_style"
-                    android:contentDescription="@string/cd_back_button"
-                    android:src="@drawable/ic_arrow_back"
-                    tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,RedundantDescriptionCheck" />
-
-                <TextView
-                    android:id="@+id/tv_label_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/google_sans_medium"
-                    android:text="@string/label_favorite_user"
-                    android:textSize="16sp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_favorite_users"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:scrollbarSize="0dp"
-                tools:listitem="@layout/item_user" />
-        </LinearLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:scrollbarSize="0dp"
+            tools:listitem="@layout/item_user" />
     </ScrollView>
 
     <TextView

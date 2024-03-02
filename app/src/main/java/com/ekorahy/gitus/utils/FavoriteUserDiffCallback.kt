@@ -1,7 +1,7 @@
 package com.ekorahy.gitus.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.ekorahy.gitus.data.local.FavoriteUser
+import com.ekorahy.gitus.data.local.entity.FavoriteUser
 
 class FavoriteUserDiffCallback(
     private val oldFavoriteUserList: List<FavoriteUser>,
